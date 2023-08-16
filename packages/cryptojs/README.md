@@ -1,73 +1,17 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# cryptojs 加密模式
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+是的，除了`CBC`（Cipher Block Chaining）加密模式之外，还有许多其他的加密模式可供选择，每种模式都有自己的特点和适用场景。以下是一些常见的加密模式：
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+1. **ECB（Electronic Codebook）：** 这是最简单的加密模式，将每个数据块单独加密，缺点是相同的明文块会产生相同的密文块。
 
-## Description
+2. **CTR（Counter）：** CTR模式将明文与计数器值进行异或操作，然后进行加密。它允许并行加密和解密操作，因此在需要高性能的场景中较为有用。
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+3. **OFB（Output Feedback）：** OFB模式类似于CTR，但是它使用加密的输出作为下一个加密块的输入。它适用于流式加密，比如加密实时流数据。
 
-## Installation
+4. **CFB（Cipher Feedback）：** CFB模式将前一个加密块的输出与下一个明文块进行异或操作，然后进行加密。类似于OFB，适用于流式加密。
 
-```bash
-$ pnpm install
-```
+5. **GCM（Galois/Counter Mode）：** GCM是一种组合了加密和认证的模式，提供了加密、完整性验证和认证等功能。适用于需要高度安全性的场景。
 
-## Running the app
+6. **CCM（Counter with CBC-MAC）：** 类似于GCM，CCM也是一种组合模式，提供了加密和认证。它适用于资源受限的环境，如物联网设备。
 
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+每种加密模式都有其自身的特点和优缺点，选择合适的模式取决于你的应用需求和安全标准。在实际应用中，还需要注意正确地使用初始化向量、密钥管理和错误处理等方面。
